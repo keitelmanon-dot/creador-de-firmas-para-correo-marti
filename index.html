@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creador de Firmas de Correo - Grupo Marti</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app">
+        <header class="hero">
+            <div class="hero-info">
+                <div class="hero-text">
+                    <h1>Generador de firma Martí</h1>
+                </div>
+            </div>
+            <div class="hero-visual" aria-hidden="true">
+                <div class="signature-sample signature-sample--logo-only">
+                    <div class="signature-sample__logo">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iMzYiIHZpZXdCb3g9IjAgMCAxNjAgMzYiPgo8dGV4dCB4PSIwIiB5PSIyNCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjIyIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjMWQ0YzhkIiBsZXR0ZXItc3BhY2luZz0iOCI+TUFSVMONPC90ZXh0Pgo8L3N2Zz4=" alt="Grupo Martí">
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="content">
+            <section class="card form-card">
+                <form id="signatureForm" class="form-grid">
+                    <h2>Información básica</h2>
+                    <div class="grid">
+                        <label>
+                            Nombre(s) *
+                            <input type="text" id="nombre" placeholder="Ej: Yulaine Franchely" required>
+                        </label>
+                        <label>
+                            Apellidos *
+                            <input type="text" id="apellidos" placeholder="Ej: Hernández Polanco" required>
+                        </label>
+                    </div>
+                    <label>
+                        Cargo / Posición *
+                        <input type="text" id="cargo" placeholder="Ej: Representante de Servicio GLP" required>
+                    </label>
+
+                    <h2>Contacto</h2>
+                    <div class="grid">
+                        <label>
+                            Correo corporativo *
+                            <input type="email" id="email" placeholder="Ej: yuhernandez@marti.do" required>
+                        </label>
+                        <label>
+                            Teléfono principal *
+                            <input type="tel" id="telefono" value="(809) 227-0003" readonly required>
+                        </label>
+                    </div>
+                    <div class="grid">
+                        <label>
+                            Extensión
+                            <input type="text" id="extension" placeholder="Ej: 2406" required>
+                        </label>
+                        <label>
+                            Celular
+                            <input type="tel" id="celular" placeholder="Ej: (809) 480-5104" required>
+                        </label>
+                    </div>
+
+                    <h2>Ubicación y web</h2>
+                    <label>
+                        Dirección *
+                        <select id="direccion" required>
+                            <option value="Ave. Jacobo Majluta KM 5, Mirador Norte, Santo Domingo, República Dominicana." data-map="https://goo.gl/maps/pLQc2JHEREW4vNwZ9">
+                                Ave. Jacobo Majluta KM 5, Mirador Norte, Santo Domingo, República Dominicana.
+                            </option>
+                            <option value="Av. Winston Churchill esq. Rafael Augusto Sánchez, Ensanche Piantini, Santo Domingo, República Dominicana." data-map="https://maps.app.goo.gl/q8cZ9JDf8PvUX7qN7">
+                                Av. Winston Churchill esq. Rafael Augusto Sánchez, Ensanche Piantini, Santo Domingo, República Dominicana.
+                            </option>
+                        </select>
+                    </label>
+                    <label>
+                        Sitio web *
+                        <input type="text" id="website" value="www.marti.do" required>
+                    </label>
+
+                    <button type="submit" class="btn-primary" id="generateBtn">Generar firma</button>
+                </form>
+            </section>
+
+            <section class="card preview-card">
+                <div class="preview-header">
+                    <h2>Vista previa</h2>
+                    <small>Actualiza los campos y vuelve a generar para ver cambios.</small>
+                </div>
+                <div id="preview" class="signature-preview">
+                    Completa el formulario y haz clic en «Generar firma» para ver el resultado.
+                </div>
+
+                <div class="actions-grid">
+                    <button type="button" id="copySignatureBtn" class="btn-secondary">
+                        📋 Copiar firma para Outlook
+                    </button>
+                    <button type="button" id="sendEmailBtn" class="btn-secondary">
+                        📧 Enviarme por correo
+                    </button>
+                    <button type="button" id="copyHtmlBtn" class="btn-ghost">
+                        💻 Copiar HTML
+                    </button>
+                    <button type="button" id="downloadBtn" class="btn-ghost">
+                        💾 Descargar HTML
+                    </button>
+                </div>
+            </section>
+
+            <section class="card help-card">
+                <h2>¿Cómo pegarla en Outlook?</h2>
+                <ol>
+                    <li>Genera la firma y presiona «Copiar firma para Outlook».</li>
+                    <li>Outlook Escritorio: Archivo → Opciones → Correo → Firmas → Nueva → Pegar.</li>
+                    <li>Outlook Web: Configuración → Ver toda la configuración → Correo → Redactar y responder → Pegar y guardar.</li>
+                    <li>Puedes usar «Enviarme por correo» para tener la firma a mano en tu bandeja.</li>
+                </ol>
+            </section>
+        </main>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="signature-image.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
